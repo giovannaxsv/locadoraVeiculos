@@ -18,7 +18,7 @@
         <li><a href="clientes.php">Gerenciar Clientes</a></li>
         <li><a href="funcionarios.php">Gerenciar Funcionários</a></li>
         <li><a href="carros.php">Gerenciar Carros</a></li>
-        <li><a href="alugueis.php">Gerenciar Aluguéis</a></li>
+        <li><a href="aluguel.php">Gerenciar Aluguéis</a></li>
         <li><a href="manutencao.php">Gerenciar Manutenção</a></li>
         <li><a href="filiais.php">Gerenciar Filiais</a></li>
     </ul>

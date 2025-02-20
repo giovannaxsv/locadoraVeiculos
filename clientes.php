@@ -21,7 +21,9 @@ include "conexao.php"; // Conectar ao banco de dados
 <body>
 
     <h1>Gerenciar Clientes</h1>
-
+<!-- Botão para retornar ao menu principal -->
+<br><br>
+    <a href="index.php"><button class="btn">Voltar ao Menu Principal</button></a>
     <!-- Adicionar Cliente -->
     <h2>Adicionar Cliente</h2>
     <form action="clientes.php" method="POST">
