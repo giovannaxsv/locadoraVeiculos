@@ -4,7 +4,6 @@ include "conexao.php"; // Conectar ao banco de dados
 // Consulta para listar os carros
 $sql = "SELECT * FROM CARRO";
 $resultado = $conexao->query($sql);
-
 ?>
 
 <!DOCTYPE html>
@@ -14,80 +13,85 @@ $resultado = $conexao->query($sql);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista de Carros</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f7fc;
-            color: #333;
+        * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg,rgb(134, 138, 132),rgb(158, 255, 182));
+            color: #FFFFFF;
+            padding: 20px;
         }
 
         .container {
-            width: 80%;
+            width: 90%;
+            max-width: 1200px;
             margin: 0 auto;
+            background:rgb(34, 33, 33);
             padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
         }
 
         h2 {
             text-align: center;
-            color: #2c3e50;
+            color: #BBFF63;
+            margin-bottom: 20px;
         }
 
         table {
             width: 100%;
             border-collapse: collapse;
-            margin-top: 20px;
-            background-color: #ffffff;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background: #020202;
+            border-radius: 12px;
+            overflow: hidden;
         }
 
-        table th, table td {
+        th, td {
             padding: 12px;
-            text-align: left;
-            border: 1px solid #ddd;
+            text-align: center;
+            border: 1px solid #BBFF63;
         }
 
-        table th {
-            background-color:rgb(20, 54, 77);
-            color: #fff;
-        }
-
-        table td {
-            background-color: #f9f9f9;
-        }
-
-        table tr:nth-child(even) td {
-            background-color: #f2f2f2;
-        }
-
-        table a {
-            color: #3498db;
-            text-decoration: none;
+        th {
+            background: #BBFF63;
+            color: #020202;
             font-weight: bold;
         }
 
-        table a:hover {
-            text-decoration: underline;
+        td {
+            background: #1A1A24;
+            color: #FFFFFF;
         }
 
-        .actions {
-            display: flex;
-            gap: 10px;
-            justify-content: center;
+        tr:nth-child(even) td {
+            background: #020202;
         }
 
-        .btn {
-            background-color:rgb(7, 30, 46);
-            color: white;
-            padding: 10px 20px;
-            border-radius: 5px;
+        .car-image {
+            width: 100px;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .actions a {
+            display: inline-block;
+            padding: 8px 15px;
+            margin: 5px;
+            background: #BBFF63;
+            color: #020202;
+            border-radius: 8px;
             text-decoration: none;
             font-weight: bold;
-            transition: background-color 0.3s ease;
+            transition: 0.3s;
         }
 
-        .btn:hover {
-            background-color: #2980b9;
+        .actions a:hover {
+            background: #036310;
+            color: #FFFFFF;
         }
 
         .link-container {
@@ -95,14 +99,21 @@ $resultado = $conexao->query($sql);
             margin-top: 20px;
         }
 
-        .link-container a {
-            margin: 0 10px;
-            color: #3498db;
+        .btn {
+            display: inline-block;
+            padding: 12px 20px;
+            background: #BBFF63;
+            color: #020202;
+            border-radius: 8px;
+            text-decoration: none;
             font-weight: bold;
+            margin: 10px;
+            transition: 0.3s;
         }
 
-        .link-container a:hover {
-            text-decoration: underline;
+        .btn:hover {
+            background: #036310;
+            color: #FFFFFF;
         }
     </style>
 </head>
@@ -116,6 +127,7 @@ $resultado = $conexao->query($sql);
         echo "<table>
                 <tr>
                     <th>ID</th>
+                    
                     <th>Placa</th>
                     <th>Marca</th>
                     <th>Modelo</th>
@@ -129,6 +141,7 @@ $resultado = $conexao->query($sql);
         while ($linha = $resultado->fetch_assoc()) {
             echo "<tr>
                     <td>" . $linha['ID_CARRO'] . "</td>
+                    
                     <td>" . $linha['PLACA'] . "</td>
                     <td>" . $linha['MARCA'] . "</td>
                     <td>" . $linha['MODELO'] . "</td>
@@ -137,14 +150,14 @@ $resultado = $conexao->query($sql);
                     <td>" . $linha['CATEGORIA'] . "</td>
                     <td>" . $linha['ID_FILIAL'] . "</td>
                     <td class='actions'>
-                        <a href='editar_carro.php?id=" . $linha['ID_CARRO'] . "'>Editar</a> |
+                        <a href='editar_carro.php?id=" . $linha['ID_CARRO'] . "'>Editar</a>
                         <a href='excluir_carro.php?id=" . $linha['ID_CARRO'] . "'>Excluir</a>
                     </td>
                 </tr>";
         }
         echo "</table>";
     } else {
-        echo "<p>Não há carros cadastrados.</p>";
+        echo "<p style='text-align: center; color: #BBFF63;'>Não há carros cadastrados.</p>";
     }
     ?>
 
